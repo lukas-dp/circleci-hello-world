@@ -73,6 +73,7 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
+      - job_with_failure
       - call_command_print_pip_id
       - save_hello_world_output
       - print_output_file:
