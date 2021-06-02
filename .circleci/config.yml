@@ -15,11 +15,23 @@ commands:
 # Orchestrate or schedule a set of jobs
 jobs:
   # Call a command
+  job_with_failure:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - run: return 1
+      - run:
+          name: Catch error
+          command: echo "A failure occured but no worries: nothing is broken."
+          when: on_fail
+
+  # Call a command
   call_command_print_pip_id:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - print_pipeline_id
+
   # Save file via workspace
   save_hello_world_output:
     docker:
@@ -38,6 +50,7 @@ jobs:
       - attach_workspace:
           at: ~/
       - run: cat ~/output.txt
+
   # Print hello world
   print_hello:
     docker:
