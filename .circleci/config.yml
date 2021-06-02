@@ -23,7 +23,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/
-      - run: cat output.txt
+      - run: cat ~/output.txt
   # Print hello world
   print_hello:
     docker:
@@ -38,7 +38,7 @@ jobs:
           name: Print World
           command:  |
             echo 'world'
-            'My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>.'
+            My pipeline id is << pipeline.id >> and my git branch is << pipeline.git.branch >>.
             echo $developer
 workflows:
   # Name the workflow "welcome"
