@@ -22,7 +22,7 @@ jobs:
       - run: return 1
       - run:
           name: Catch error
-          command: echo "A failure occured but no worries: nothing is broken."
+          command: echo 'A failure occured but no worries, nothing is broken.'
           when: on_fail
 
   # Call a command
